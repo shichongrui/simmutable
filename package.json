@@ -1,0 +1,15 @@
+{
+  "name": "simmutable",
+  "version": "1.0.0",
+  "description": "An immutable store using normal javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "immutable",
+    "store"
+  ],
+  "author": "Matthew Sessions",
+  "license": "MIT"
+}

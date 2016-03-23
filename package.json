@@ -6,11 +6,15 @@
   "scripts": {
     "test": "tape tests.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shichongrui/simmutable"
+  },
   "keywords": [
     "immutable",
     "store"
   ],
-  "author": "Matthew Sessions",
+  "author": "Matthew Sessions <shichongrui@gmail.com> (http://www.matthewsessions.com/)",
   "license": "MIT",
   "dependencies": {
     "eventemitter3": "1.2.0"

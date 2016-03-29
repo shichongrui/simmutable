@@ -86,3 +86,12 @@ test('emits change events whenever the store changes', function (t) {
   t.ok(changeEmitted)
   t.end()
 })
+
+test('doesnt error on null values', function (t) {
+  t.doesNotThrow(function () {
+    store.clear()
+
+    store.set({a: {b: null, c: 1}})
+  })
+  t.end()
+})

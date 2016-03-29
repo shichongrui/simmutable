@@ -23,9 +23,9 @@ const store = Object.assign({
 
 function merge (oldObject, newObject) {
   var returnValue
-  if (oldObject) {
+  if (oldObject && newObject) {
     var changes = Object.keys(newObject).reduce((memo, key) => {
-      if (typeof newObject[key] === 'object') {
+      if (newObject[key] !== null && typeof newObject[key] === 'object') {
         var mergeResult = merge(oldObject[key], newObject[key])
         if (Object.keys(mergeResult).length > 0) {
           memo[key] = mergeResult

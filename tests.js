@@ -95,3 +95,10 @@ test('doesnt error on null values', function (t) {
   })
   t.end()
 })
+
+test('works with arrays', function (t) {
+  store.clear()
+  store.set({a: [1, 2, 3]})
+  t.ok(Array.isArray(store.get().a))
+  t.end()
+})

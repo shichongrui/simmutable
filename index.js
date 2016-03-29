@@ -25,7 +25,7 @@ function merge (oldObject, newObject) {
   var returnValue
   if (oldObject && newObject) {
     var changes = Object.keys(newObject).reduce((memo, key) => {
-      if (newObject[key] !== null && typeof newObject[key] === 'object') {
+      if (newObject[key] !== null && !Array.isArray(newObject[key]) && typeof newObject[key] === 'object') {
         var mergeResult = merge(oldObject[key], newObject[key])
         if (Object.keys(mergeResult).length > 0) {
           memo[key] = mergeResult

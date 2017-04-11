@@ -1,8 +1,8 @@
 var test = require('tape')
-var store = require('./index')
+var createStore = require('./index')
 
 test('mutates the store when there is a change', function (t) {
-  store.clear()
+  let store = createStore()
 
   store.set({a: 1})
   var firstStore = store.get()
@@ -16,7 +16,7 @@ test('mutates the store when there is a change', function (t) {
 })
 
 test('mutates the store for changes deep in the store', function (t) {
-  store.clear()
+  let store = createStore()
 
   store.set({a: {b: {c: 1}}})
   var firstStore = store.get()
@@ -33,7 +33,7 @@ test('mutates the store for changes deep in the store', function (t) {
 })
 
 test('doesnt affect non changed branches in store tree', function (t) {
-  store.clear()
+  let store = createStore()
 
   store.set({a: {b: {c: 1}, d: {e: 1}}})
   var firstStore = store.get()
@@ -50,7 +50,7 @@ test('doesnt affect non changed branches in store tree', function (t) {
 })
 
 test('freezes the store by default', function (t) {
-  store.clear()
+  let store = createStore()
 
   store.set({a: {b: 2}})
   var value = store.get()
@@ -61,8 +61,7 @@ test('freezes the store by default', function (t) {
 })
 
 test('freezing can be disabled', function (t) {
-  store.config.shouldFreeze = false
-  store.clear()
+  let store = createStore({ shouldFreeze: false })
 
   store.set({a: {b: 2}})
   var value = store.get()
@@ -74,7 +73,7 @@ test('freezing can be disabled', function (t) {
 })
 
 test('emits change events whenever the store changes', function (t) {
-  store.clear()
+  let store = createStore()
 
   var changeEmitted = false
   store.on('change', function () {
@@ -89,7 +88,7 @@ test('emits change events whenever the store changes', function (t) {
 
 test('doesnt error on null values', function (t) {
   t.doesNotThrow(function () {
-    store.clear()
+    let store = createStore()
 
     store.set({a: {b: null, c: 1}})
   })
@@ -97,7 +96,7 @@ test('doesnt error on null values', function (t) {
 })
 
 test('works with arrays', function (t) {
-  store.clear()
+  let store = createStore()
   store.set({a: [1, 2, 3]})
   t.ok(Array.isArray(store.get().a))
   t.end()

@@ -4,7 +4,9 @@ A simple immutable store.
 
 ## How to use
 
-    var store = require('simmutable')
+    const createStore = require('simmutable')
+
+    const store = createStore()
 
     store.get() // {}
 

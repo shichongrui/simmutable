@@ -1,7 +1,6 @@
 const EventEmitter = require('eventemitter3')
 
 function merge (oldObject, newObject, shouldFreeze) {
-  debugger
   let returnValue
   if (oldObject && newObject) {
     let changes = Object.keys(newObject).reduce((memo, key) => {

@@ -14,6 +14,7 @@ function merge (oldObject, newObject, shouldFreeze) {
       }
       return memo
     }, {})
+
     if (Object.keys(changes).length > 0) {
       returnValue = Object.assign({}, oldObject, changes)
     } else {
@@ -22,6 +23,13 @@ function merge (oldObject, newObject, shouldFreeze) {
   } else {
     returnValue = Object.assign({}, newObject)
   }
+
+  returnValue = Object.keys(returnValue)
+    .filter(key => returnValue[key] != null)
+    .reduce((o, key) => {
+      o[key] = returnValue[key]
+      return o
+    }, {})
   return shouldFreeze ? Object.freeze(returnValue) : returnValue
 }
 

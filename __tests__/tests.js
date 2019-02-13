@@ -108,3 +108,11 @@ test('works with empty objects', () => {
   store.set({ a: {} })
   expect(store.get().a).toEqual({})
 })
+
+test('removes keys when set to undefined', () => {
+  let store = createStore()
+  store.set({ a: { b: 1 }})
+  expect(store.get().a.b).toEqual(1)
+  store.set({ a: { b: undefined }})
+  expect(store.get().a.b).toBeUndefined()
+})
